@@ -14,26 +14,26 @@ import java.util.List;
 public class CarResource {
 	
 	@Autowired
-	private CarHardcodedService carservice;
+	private CarHardcodedService carService;
 	
 	@GetMapping("/users/{username}/cars")
 	public List<Car> getAllcars(@PathVariable String username){
-		return carservice.findAll();
+		return carService.findAll();
 	}
 
 	@GetMapping("/users/{username}/cars/{id}")
-	public Car getTodo(@PathVariable String username, @PathVariable long id){
-		return carservice.findById(id);
+	public Car getCar(@PathVariable String username, @PathVariable long id){
+		return carService.findById(id);
 	}
 
 	//DELETE /users/{username}/cars/{id}
 	@DeleteMapping("/users/{username}/cars/{id}")
-	public ResponseEntity<Void> deleteTodo(
+	public ResponseEntity<Void> deleteCar(
             @PathVariable String username, @PathVariable long id){
 
-		Car todo = carservice.deleteById(id);
+		Car car = carService.deleteById(id);
 		
-		if(todo!=null) {
+		if(car!=null) {
 			return ResponseEntity.noContent().build();
 		}
 		
@@ -41,23 +41,23 @@ public class CarResource {
 	}
 	
 
-	//Edit/Update a Todo
+	//Edit/Update a car
 	//PUT /users/{user_name}/cars/{todo_id}
 	@PutMapping("/users/{username}/cars/{id}")
-	public ResponseEntity<Car> updateTodo(
+	public ResponseEntity<Car> updateCar(
             @PathVariable String username,
-            @PathVariable long id, @RequestBody Car todo){
+            @PathVariable long id, @RequestBody Car car){
 
-		Car todoUpdated = carservice.save(todo);
+		Car carUpdated = carService.save(car);
 		
-		return new ResponseEntity<Car>(todo, HttpStatus.OK);
+		return new ResponseEntity<Car>(car, HttpStatus.OK);
 	}
 	
 	@PostMapping("/users/{username}/cars")
-	public ResponseEntity<Void> updateTodo(
-            @PathVariable String username, @RequestBody Car todo){
+	public ResponseEntity<Void> updateCar(
+            @PathVariable String username, @RequestBody Car car){
 
-		Car createdTodo = carservice.save(todo);
+		Car createdTodo = carService.save(car);
 		
 		//Location
 		//Get current resource url

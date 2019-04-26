@@ -10,46 +10,50 @@ import java.util.List;
 @Service
 public class CarHardcodedService {
 	
-	private static List<Car> todos = new ArrayList<>();
+	private static List<Car> cars = new ArrayList<>();
 	private static long idCounter = 0;
 	
 	static {
-		todos.add(new Car(++idCounter, "in28minutes","Learn to Dance 2", new Date(), false ));
-		todos.add(new Car(++idCounter, "in28minutes","Learn about Microservices 2", new Date(), false ));
-		todos.add(new Car(++idCounter, "in28minutes","Learn about Angular", new Date(), false ));
+
+		cars.add(new Car(++idCounter, "Ford 1","2005", new Date(), false ));
+		cars.add(new Car(++idCounter, "Ford 2","2006", new Date(), false ));
+		cars.add(new Car(++idCounter, "Ford 3","2007", new Date(), false ));
+		cars.add(new Car(++idCounter, "Ford 4","2008", new Date(), false ));
+		cars.add(new Car(++idCounter, "Ford 5","2009", new Date(), false ));
+		cars.add(new Car(++idCounter, "Ford 6","2009", new Date(), false ));
 	}
 	
 	public List<Car> findAll() {
-		return todos;
+		return cars;
 	}
 
-	public Car save(Car todo) {
-		if(todo.getId()==-1 || todo.getId()==0) {
-			todo.setId(++idCounter);
-			todos.add(todo);
+	public Car save(Car car) {
+		if(car.getId()==-1 || car.getId()==0) {
+			car.setId(++idCounter);
+			cars.add(car);
 		} else {
-			deleteById(todo.getId());
-			todos.add(todo);
+			deleteById(car.getId());
+			cars.add(car);
 		}
-		return todo;
+		return car;
 	}
 	
 	public Car deleteById(long id) {
-		Car todo = findById(id);
+		Car car = findById(id);
 		
-		if(todo==null) return null;
+		if(car==null) return null;
 		
-		if(todos.remove(todo)) {
-			return todo;
+		if(cars.remove(car)) {
+			return car;
 		}
 		
 		return null;
 	}
 
 	public Car findById(long id) {
-		for(Car todo:todos) {
-			if(todo.getId() == id) {
-				return todo;
+		for(Car car:cars) {
+			if(car.getId() == id) {
+				return car;
 			}
 		}
 		

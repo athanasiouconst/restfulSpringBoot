@@ -14,57 +14,55 @@ import java.util.List;
 public class CarJpaResource {
 	
 	@Autowired
-	private CarHardcodedService todoService;
+	private CarHardcodedService carService;
 
 	@Autowired
-	private CarJpaRepository todoJpaRepository;
+	private CarJpaRepository carJpaRepository;
 
 	
 	@GetMapping("/jpa/users/{username}/todos")
 	public List<Car> getAllTodos(@PathVariable String username){
-		return todoJpaRepository.findByUsername(username);
+		return carJpaRepository.findByUsername(username);
 		//return todoService.findAll();
 	}
 
 	@GetMapping("/jpa/users/{username}/todos/{id}")
 	public Car getTodo(@PathVariable String username, @PathVariable long id){
-		return todoJpaRepository.findById(id).get();
+		return carJpaRepository.findById(id).get();
 		//return todoService.findById(id);
 	}
 
-	//DELETE /users/{username}/todos/{id}
+	//DELETE /users/{username}/cars/{id}
 	@DeleteMapping("/jpa/users/{username}/todos/{id}")
-	public ResponseEntity<Void> deleteTodo(
+	public ResponseEntity<Void> deleteCar(
             @PathVariable String username, @PathVariable long id){
 		
 
-		todoJpaRepository.deleteById(id);
+		carJpaRepository.deleteById(id);
 		
 		return ResponseEntity.noContent().build();
 		//return ResponseEntity.notFound().build();
 	}
 	
 
-	//Edit/Update a Todo
-	//PUT /users/{user_name}/todos/{todo_id}
+	//Edit/Update a car
+	//PUT /users/{user_name}/cars/{todo_id}
 	@PutMapping("/jpa/users/{username}/todos/{id}")
-	public ResponseEntity<Car> updateTodo(
+	public ResponseEntity<Car> updateCar(
             @PathVariable String username,
-            @PathVariable long id, @RequestBody Car todo){
+            @PathVariable long id, @RequestBody Car car){
 		
-		//Todo todoUpdated = todoService.save(car);
-		Car todoUpdated = todoJpaRepository.save(todo);
+		Car carUpdated = carJpaRepository.save(car);
 		
-		return new ResponseEntity<Car>(todo, HttpStatus.OK);
+		return new ResponseEntity<Car>(car, HttpStatus.OK);
 	}
 	
 	@PostMapping("/jpa/users/{username}/todos")
-	public ResponseEntity<Void> createTodo(
-            @PathVariable String username, @RequestBody Car todo){
+	public ResponseEntity<Void> createCar(
+            @PathVariable String username, @RequestBody Car car){
 		
-		//Todo createdTodo = todoService.save(car);
-		todo.setUsername(username);
-		Car createdTodo = todoJpaRepository.save(todo);
+		car.setUsername(username);
+		Car createdTodo = carJpaRepository.save(car);
 		
 		//Location
 		//Get current resource url
