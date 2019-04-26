@@ -12,8 +12,8 @@ public class Car {
 	@GeneratedValue
 	private Long id;
 	
-	private String username;
 	private String description;
+	private String model;
 	private Date targetDate;
 	private boolean isDone;
 	
@@ -21,11 +21,12 @@ public class Car {
 		
 	}
 	
-	public Car(long id, String username, String description, Date targetDate, boolean isDone) {
+	public Car(long id, String description, String model, Date targetDate, boolean isDone) {
 		super();
 		this.id = id;
-		this.username = username;
 		this.description = description;
+		this.model = model;
+
 		this.targetDate = targetDate;
 		this.isDone = isDone;
 	}
@@ -38,12 +39,13 @@ public class Car {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+
+	public String getModel() {
+		return model;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	public String getDescription() {
