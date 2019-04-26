@@ -14,10 +14,17 @@ public class MainBeanController {
         return "This is main Page from Controller";
     }
 
+
     @GetMapping(path = "/main-bean")
-    public MainBean helloWorldBean() {
+    public MainBean mainBean() {
         //throw new RuntimeException("Some Error has Happened! Contact Support at ***-***");
-        return new MainBean("Main Pge - Changed");
+        return new MainBean("Main Page - Bean");
+    }
+
+    @GetMapping(path = "/main-bean-custom")
+    public MainBean mainBeanCustom() {
+        //throw new RuntimeException("Some Error has Happened! Contact Support at ***-***");
+        return new MainBean("Main Pge - Bean - Custom");
     }
 
     @GetMapping(path = "/main-bean/username/{name}")
