@@ -20,20 +20,20 @@ public class CarJpaResource {
 	private CarJpaRepository carJpaRepository;
 
 	
-	@GetMapping("/jpa/users/{username}/todos")
-	public List<Car> getAllTodos(@PathVariable String username){
+	@GetMapping("/jpa/users/{username}/cars")
+	public List<Car> getAllCars(@PathVariable String username){
 		return carJpaRepository.findByUsername(username);
 		//return todoService.findAll();
 	}
 
-	@GetMapping("/jpa/users/{username}/todos/{id}")
-	public Car getTodo(@PathVariable String username, @PathVariable long id){
+	@GetMapping("/jpa/users/{username}/cars/{id}")
+	public Car getCar(@PathVariable String username, @PathVariable long id){
 		return carJpaRepository.findById(id).get();
 		//return todoService.findById(id);
 	}
 
 	//DELETE /users/{username}/cars/{id}
-	@DeleteMapping("/jpa/users/{username}/todos/{id}")
+	@DeleteMapping("/jpa/users/{username}/cars/{id}")
 	public ResponseEntity<Void> deleteCar(
             @PathVariable String username, @PathVariable long id){
 		
@@ -47,7 +47,7 @@ public class CarJpaResource {
 
 	//Edit/Update a car
 	//PUT /users/{user_name}/cars/{todo_id}
-	@PutMapping("/jpa/users/{username}/todos/{id}")
+	@PutMapping("/jpa/users/{username}/cars/{id}")
 	public ResponseEntity<Car> updateCar(
             @PathVariable String username,
             @PathVariable long id, @RequestBody Car car){
@@ -57,18 +57,18 @@ public class CarJpaResource {
 		return new ResponseEntity<Car>(car, HttpStatus.OK);
 	}
 	
-	@PostMapping("/jpa/users/{username}/todos")
+	@PostMapping("/jpa/users/{username}/cars")
 	public ResponseEntity<Void> createCar(
             @PathVariable String username, @RequestBody Car car){
 		
 		car.setUsername(username);
-		Car createdTodo = carJpaRepository.save(car);
+		Car createdCar = carJpaRepository.save(car);
 		
 		//Location
 		//Get current resource url
 		///{id}
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
+				.path("/{id}").buildAndExpand(createdCar.getId()).toUri();
 		
 		return ResponseEntity.created(uri).build();
 	}

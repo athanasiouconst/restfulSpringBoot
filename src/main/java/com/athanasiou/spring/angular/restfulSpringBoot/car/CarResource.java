@@ -17,7 +17,7 @@ public class CarResource {
 	private CarHardcodedService carService;
 	
 	@GetMapping("/users/{username}/cars")
-	public List<Car> getAllcars(@PathVariable String username){
+	public List<Car> getAllCars(@PathVariable String username){
 		return carService.findAll();
 	}
 
@@ -57,13 +57,13 @@ public class CarResource {
 	public ResponseEntity<Void> updateCar(
             @PathVariable String username, @RequestBody Car car){
 
-		Car createdTodo = carService.save(car);
+		Car createdCar = carService.save(car);
 		
 		//Location
 		//Get current resource url
 		///{id}
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(createdTodo.getId()).toUri();
+				.path("/{id}").buildAndExpand(createdCar.getId()).toUri();
 		
 		return ResponseEntity.created(uri).build();
 	}
