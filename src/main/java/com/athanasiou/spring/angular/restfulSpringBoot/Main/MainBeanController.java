@@ -18,13 +18,13 @@ public class MainBeanController {
     @GetMapping(path = "/main-bean")
     public MainBean mainBean() {
         //throw new RuntimeException("Some Error has Happened! Contact Support at ***-***");
-        return new MainBean("Main Page - Bean");
+        return new MainBean("This is a message from Main Bean Controller - mainBean method");
     }
 
     @GetMapping(path = "/main-bean-custom")
     public MainBean mainBeanCustom() {
         //throw new RuntimeException("Some Error has Happened! Contact Support at ***-***");
-        return new MainBean("Main Pge - Bean - Custom");
+        return new MainBean("This is a message from Main Bean Controller - mainBeanCustom method");
     }
 
     @GetMapping(path = "/main-bean/username/{name}")

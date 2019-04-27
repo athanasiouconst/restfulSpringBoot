@@ -15,12 +15,12 @@ public class CarHardcodedService {
 	
 	static {
 
-		cars.add(new Car(++idCounter, "Ford 1","2005", new Date(), false ));
-		cars.add(new Car(++idCounter, "Ford 2","2006", new Date(), false ));
-		cars.add(new Car(++idCounter, "Ford 3","2007", new Date(), false ));
-		cars.add(new Car(++idCounter, "Ford 4","2008", new Date(), false ));
-		cars.add(new Car(++idCounter, "Ford 5","2009", new Date(), false ));
-		cars.add(new Car(++idCounter, "Ford 6","2009", new Date(), false ));
+		cars.add(new Car(++idCounter, "costas Spring", "Ford 1","2005", new Date(), false ));
+		cars.add(new Car(++idCounter, "costas Spring","Ford 2","2006", new Date(), false ));
+		cars.add(new Car(++idCounter, "costas Spring","Ford 3","2007", new Date(), false ));
+		cars.add(new Car(++idCounter, "costas Spring","Ford 4","2008", new Date(), false ));
+		cars.add(new Car(++idCounter, "costas Spring","Ford 5","2009", new Date(), false ));
+		cars.add(new Car(++idCounter, "costas Spring","Ford 6","2009", new Date(), false ));
 	}
 	
 	public List<Car> findAll() {
