@@ -2,6 +2,7 @@ package com.athanasiou.spring.angular.restfulSpringBoot.car;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -58,14 +59,15 @@ public class CarResource {
             @PathVariable String username, @RequestBody Car car){
 
 		Car createdCar = carService.save(car);
-		
+
 		//Location
 		//Get current resource url
 		///{id}
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(createdCar.getId()).toUri();
-		
+
 		return ResponseEntity.created(uri).build();
 	}
+
 		
 }

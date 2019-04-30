@@ -60,10 +60,10 @@ public class CarJpaResource {
 	@PostMapping("/jpa/users/{username}/cars")
 	public ResponseEntity<Void> createCar(
             @PathVariable String username, @RequestBody Car car){
-		
+
 		car.setUsername(username);
 		Car createdCar = carJpaRepository.save(car);
-		
+
 		//Location
 		//Get current resource url
 		///{id}

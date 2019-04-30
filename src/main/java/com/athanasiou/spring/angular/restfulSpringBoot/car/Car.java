@@ -11,6 +11,7 @@ public class Car {
 	@Id
 	@GeneratedValue
 	private Long id;
+
 	private String username;
 	private String description;
 	private String model;
